@@ -11,7 +11,9 @@
     // $components[$i][1] -> Defins The Name of the Components Name to show up in the header
     // $components[$i][2] -> Defins if the component shows up in the header
     $components = array(
-        array("main", "Test", 0),
+        array("main", "main", 1),
+        array("header", "header", 1),
+        array("home", "Home", 1),
     );
 
 
@@ -32,6 +34,9 @@
 
     // Get The Page Name, Create Path And Get Content From HTML File
     function GetPage($PageName){
+        if(file_get_contents("components/".$PageName."/".$PageName.".html") == ""){
+            return file_get_contents("components/error.html");
+        }
         return file_get_contents("components/".$PageName."/".$PageName.".html");
     }
 
